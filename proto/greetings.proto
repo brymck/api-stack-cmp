@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package brymck.greeting.v1;
+
+option go_package = "greetingv1";
+option java_multiple_files = true;
+option java_outer_classname = "GreetingApiProto";
+option java_package = "com.brymck.greeting.v1";
+
+// GreetingAPI greets people.
+service GreetingAPI {
+    // Greet takes in a person and language and responds with a greeting.
+    rpc Greet(GreetRequest) returns (GreetResponse);
+}
+
+message GreetRequest {
+    // The person's name.
+    string name = 1;
+}
+
+message GreetResponse {
+    // The individualized greeting.
+    string message = 1;
+}

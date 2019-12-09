@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: Greeting
+  version: 0.0.1
+  license:
+    name: MIT
+  description: |
+    This is a example OpenAPI spec to test performance implications of various protocols and server libraries
+servers:
+  - url: http://localhost:8080/v1/
+paths:
+  /greetings/:
+    post:
+      summary: Get a greeting
+      operationId: createGreeting
+      tags:
+        - greetings
+      requestBody:
+        description: Greeting request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Request"
+      responses:
+        200:
+          description: greeting response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Request:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The greeting's message
+    Response:
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: The greeting's message
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

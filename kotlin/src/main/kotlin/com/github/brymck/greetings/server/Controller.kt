@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/v1")
-class Controller(private val service: Service) {
+class Controller(private val service: GreetingsService) {
     @PostMapping("/greetings")
     fun createGreeting(@RequestBody request: Request): Response {
-        val greeting = service.sayHello(request.name)
+        val greeting = service.greet(request.name)
         return Response(greeting)
     }
 }

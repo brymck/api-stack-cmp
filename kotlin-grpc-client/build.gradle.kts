@@ -39,7 +39,7 @@ repositories {
 }
 
 application {
-    mainClassName = "com.github.brymck.greetings.server.App"
+    mainClassName = "com.github.brymck.greetings.client.App"
 }
 
 val grpcVersion = "1.25.0"
@@ -56,9 +56,16 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2")
+
     // Logging
     implementation("io.github.microutils:kotlin-logging:1.7.7")
     implementation("org.slf4j:slf4j-simple:1.7.26")
+
+    // REST API calls
+    implementation("com.squareup.okhttp3:okhttp:4.2.0")
+    implementation("com.google.code.gson:gson:2.8.6")
 
     // Shaded JARs
     runtimeOnly("io.grpc:grpc-netty-shaded:$grpcVersion")
